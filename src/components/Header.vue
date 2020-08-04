@@ -3,14 +3,14 @@
     <header class="weather_header">
       <h3 class="weather_header-logo">WeatherNow</h3>
       <div class="weather_header-search">
-        <div class="search">
-          <input type="text" placeholder=" " />
+        <form class="search" @submit.prevent="fetchWeather">
+          <input type="text" placeholder="Moscow, RU" v-model="title" />
           <div>
             <svg>
               <use xlink:href="#path" />
             </svg>
           </div>
-        </div>
+        </form>
       </div>
     </header>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -24,7 +24,38 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue'
+import { mapActions } from 'vuex'
+import * as TYPES from '@/store/type-mutations'
+
+export default Vue.extend({
+  data() {
+    return {
+      title: '',
+    }
+  },
+  methods: {
+    ...mapActions({
+      fetchWeatherToday: TYPES.FETCH_WEATHER_TODAY,
+    }),
+
+    fetchWeather() {
+      this.fetchWeatherToday(this.title)
+    },
+  },
+})
+</script>
+
 <style scoped>
+input::placeholder {
+  color: transparent;
+  transition: all 0.3s ease;
+}
+input:focus::placeholder {
+  color: grey;
+}
+
 .weather_header {
   display: flex;
   align-items: center;
@@ -117,7 +148,7 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: "Mukta Malar", Arial;
+  font-family: 'Mukta Malar', Arial;
   background: #f3628d;
   display: -webkit-box;
   display: flex;

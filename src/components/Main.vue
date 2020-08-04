@@ -2,15 +2,44 @@
   <div class="container">
     <main class="weather_main">
       <div class="weather_main-today">
-        <p class="weather_main-today_temp">14</p>
+        <p class="weather_main-today_temp">{{ updateTemp || 0 }}</p>
         <p class="weather_main-today_description">
-          Today is a rainy day
-          <span>Don't forget an umbrella</span>
+          {{ todayWeather.weather.description }}
+          <span>{{ adviceTemp }}</span>
         </p>
       </div>
     </main>
   </div>
 </template>
+
+<script lang="ts">
+import Vue, { PropType } from 'vue'
+import { TodayWeatherType } from '@/store/type-ts'
+
+export default Vue.extend({
+  props: {
+    todayWeather: {
+      type: Object as PropType<TodayWeatherType>,
+      required: true,
+    },
+  },
+  computed: {
+    updateTemp(): number {
+      return Math.floor(this.todayWeather.temp || 0)
+    },
+    adviceTemp(): string {
+      switch (this.todayWeather.weather.description) {
+        case 'Местами облачно':
+          return 'Оставьте свой зонт дома'
+        case 'Облачно':
+          return 'Не забудьте взять зонт'
+        default:
+          return 'На улице отличная погода'
+      }
+    },
+  },
+})
+</script>
 
 <style scoped>
 .weather_main {
@@ -30,7 +59,7 @@
 }
 
 .weather_main-today_temp::after {
-  content: "°";
+  content: '°';
   font-size: 0.6em;
   position: relative;
   top: -70px;
