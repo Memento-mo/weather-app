@@ -57,4 +57,10 @@
   opacity: 0.5;
   margin: 40px 0;
 }
+
+.flex-default {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 </style>

@@ -2,7 +2,9 @@
   <section class="weather-sidebar">
     <div class="weather-sidebar_container">
       <div class="weather-sidebar_block">
-        <h2 class="weather-sidebar_title">{{ todayWeather.city_name }}</h2>
+        <h2 class="weather-sidebar_title">
+          {{ todayWeather.city_name }}
+        </h2>
       </div>
 
       <div class="line sidebar-line"></div>
@@ -11,27 +13,33 @@
         <h2 class="weather-sidebar_title">Подробности</h2>
         <div class="weather-sidebar_details">
           <div class="weather-sidebar_details-item">Облачность</div>
-          <div class="weather-sidebar_details-item">{{ `${floorNumber(todayWeather.clouds)}%` }}</div>
+          <div class="weather-sidebar_details-item">
+            {{ `${floorNumber(todayWeather.clouds)}%` }}
+          </div>
         </div>
         <div class="weather-sidebar_details">
           <div class="weather-sidebar_details-item">Влажность</div>
-          <div class="weather-sidebar_details-item">{{ `${floorNumber(todayWeather.rh)}%` }}</div>
+          <div class="weather-sidebar_details-item">
+            {{ `${floorNumber(todayWeather.rh)}%` }}
+          </div>
         </div>
         <div class="weather-sidebar_details">
           <div class="weather-sidebar_details-item">Ветер</div>
-          <div
-            class="weather-sidebar_details-item"
-          >{{ `${floorNumber(todayWeather.wind_spd)} м/c` }}</div>
+          <div class="weather-sidebar_details-item">
+            {{ `${floorNumber(todayWeather.wind_spd)} м/c` }}
+          </div>
         </div>
         <div class="weather-sidebar_details">
           <div class="weather-sidebar_details-item">Восход</div>
-          <div
-            class="weather-sidebar_details-item"
-          >{{ this.sunriseAndSunset(todayWeather.sunrise) }}</div>
+          <div class="weather-sidebar_details-item">
+            {{ this.sunriseAndSunset(todayWeather.sunrise) }}
+          </div>
         </div>
         <div class="weather-sidebar_details">
           <div class="weather-sidebar_details-item">Закат</div>
-          <div class="weather-sidebar_details-item">{{ this.sunriseAndSunset(todayWeather.sunset) }}</div>
+          <div class="weather-sidebar_details-item">
+            {{ this.sunriseAndSunset(todayWeather.sunset) }}
+          </div>
         </div>
       </div>
 
@@ -108,7 +116,7 @@ export default Vue.extend({
 })
 </script>
 
-<style >
+<style>
 .weather-sidebar {
   height: 97vh;
   max-width: 500px;

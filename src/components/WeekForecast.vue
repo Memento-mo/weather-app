@@ -15,7 +15,15 @@
           class="weather_hourly-item_image"
           :src="image(day.weather.icon)"
         />
-        <p class="weather_hourly-item_temp">{{}}</p>
+        <div class="flex-default">
+          <p class="weather_hourly-item_temp">
+            {{ updateTemp(day.app_min_temp) }}
+          </p>
+          <span>-</span>
+          <p class="weather_hourly-item_temp">
+            {{ updateTemp(day.app_max_temp) }}
+          </p>
+        </div>
       </div>
     </li>
   </ul>
@@ -23,6 +31,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { updateTemp } from '@/utils/utils'
+import '@/components/weatherDetails.css'
+
 export default Vue.extend({
   props: {
     weekForecast: {
@@ -38,6 +49,13 @@ export default Vue.extend({
       const dayOfWeek = new Date(date)
       return days[dayOfWeek.getDay()]
     },
+    updateTemp,
   },
 })
 </script>
+
+<style scoped>
+.flex-default span {
+  margin: 0 10px;
+}
+</style>
