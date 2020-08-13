@@ -1,4 +1,5 @@
-# weather-app
+<h1>"Погода"</h1>
+<img src="https://i.ibb.co/s2D4LSn/weather.png"></img>
 
 ## Project setup
 ```
@@ -24,7 +25,3 @@ npm run test:unit
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-"# weather-app" 
